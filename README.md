@@ -10,6 +10,7 @@
 
 
 # How to use
+- https://tetsuakibaba.github.io/iaFukusa/public/
 
 # Requirements
 - read-excel-file：https://www.npmjs.com/package/read-excel-file
