@@ -538,7 +538,7 @@ function assign() {
   for (student of m1) {
     teachers = shuffle(teachers);
     let ts = teachers.filter(function (item) {
-      return item.capacity_count > 0;
+      return item.capacity_count > 0 && item.name != student.supervisor && item.name != student.sub1;
     });
     if (ts.length > 0) {
       ts[0].capacity_count--;
