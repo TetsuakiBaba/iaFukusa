@@ -63,7 +63,8 @@ input.addEventListener('change', function () {
         name_ja: name_ja,
         name_en: name_en,
         title: title,
-        supervisor: supervisor
+        supervisor: supervisor,
+        sub1: row[5]
       })
     }
     label.innerHTML += "<li>M1: " + str(m1.length) + "</li>";
@@ -159,6 +160,12 @@ function calc() {
     });
     if (t.length > 1) alert("予期せぬエラーです．");
     t[0].count.m1.sup++;
+
+    t = teachers.filter(function (item) {
+      return item.name == student.sub1;
+    });
+    if (t.length > 1) alert("予期せぬエラーです．");
+    t[0].count.m1.sub++;
   }
 
   for (student of m2) {
