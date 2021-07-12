@@ -158,14 +158,22 @@ function calc() {
     t = teachers.filter(function (item) {
       return item.name == student.supervisor;
     });
-    if (t.length > 1) alert("予期せぬエラーです．");
-    t[0].count.m1.sup++;
+    if (t.length > 0) {
+      t[0].count.m1.sup++;
+    }
+    else {
+      //alert("教員一覧に " + student.supervisor + "はいません");
+    }
 
     t = teachers.filter(function (item) {
       return item.name == student.sub1;
     });
-    if (t.length > 1) alert("予期せぬエラーです．");
-    t[0].count.m1.sub++;
+    if (t.length > 0) {
+      t[0].count.m1.sub++;
+    }
+    else {
+      //alert("教員一覧に " + student.sub1 + "はいません");
+    }
   }
 
   for (student of m2) {
@@ -173,20 +181,23 @@ function calc() {
     t = teachers.filter(function (item) {
       return item.name == student.supervisor;
     });
-    if (t.length > 1) alert("予期せぬエラーです．");
-    t[0].count.m2.sup++;
+    if (t.length > 0) {
+      t[0].count.m2.sup++;
+    }
 
     t = teachers.filter(function (item) {
       return item.name == student.sub1;
     });
-    if (t.length > 1) alert("予期せぬエラーです．");
-    t[0].count.m2.sub++;
+    if (t.length > 0) {
+      t[0].count.m2.sub++;
+    }
 
     t = teachers.filter(function (item) {
       return item.name == student.sub2;
     });
-    if (t.length > 1) alert("予期せぬエラーです．");
-    t[0].count.m2.sub++;
+    if (t.length > 0) {
+      t[0].count.m2.sub++;
+    }
   }
 
   for (student of d1) {
@@ -194,9 +205,11 @@ function calc() {
     t = teachers.filter(function (item) {
       return item.name == student.supervisor;
     });
-    if (t.length > 1) alert("予期せぬエラーです．");
-    console.log(t);
-    t[0].count.d1.sup++;
+    if (t.length > 0) {
+      t[0].count.d1.sup++;
+    }
+
+
 
     t = teachers.filter(function (item) {
       return item.name == student.sub1;
@@ -215,21 +228,23 @@ function calc() {
     t = teachers.filter(function (item) {
       return item.name == student.supervisor;
     });
-    if (t.length > 1) alert("予期せぬエラーです．");
-    console.log(student);
-    t[0].count.d2.sup++;
+    if (t.length > 0) {
+      t[0].count.d2.sup++;
+    }
 
     t = teachers.filter(function (item) {
       return item.name == student.sub1;
     });
-    if (t.length > 1) alert("予期せぬエラーです．");
-    t[0].count.d2.sub++;
+    if (t.length > 0) {
+      t[0].count.d2.sub++;
+    }
 
     t = teachers.filter(function (item) {
       return item.name == student.sub2;
     });
-    if (t.length > 1) alert("予期せぬエラーです．");
-    t[0].count.d2.sub++;
+    if (t.length > 0) {
+      t[0].count.d2.sub++;
+    }
   }
 
   for (student of d3) {
@@ -237,20 +252,23 @@ function calc() {
     t = teachers.filter(function (item) {
       return item.name == student.supervisor;
     });
-    if (t.length > 1) alert("予期せぬエラーです．");
-    t[0].count.d3.sup++;
+    if (t.length > 0) {
+      t[0].count.d3.sup++;
+    }
 
     t = teachers.filter(function (item) {
       return item.name == student.sub1;
     });
-    if (t.length > 1) alert("予期せぬエラーです．");
-    t[0].count.d3.sub++;
+    if (t.length > 0) {
+      t[0].count.d3.sub++;
+    }
 
     t = teachers.filter(function (item) {
       return item.name == student.sub2;
     });
-    if (t.length > 1) alert("予期せぬエラーです．");
-    t[0].count.d3.sub++;
+    if (t.length > 0) {
+      t[0].count.d3.sub++;
+    }
   }
 
   let table = createElement('table');
@@ -542,6 +560,7 @@ function assign() {
   for (teacher of teachers) {
     teacher.capacity_count = teacher.capacity;
   }
+  m1 = shuffle(m1);
   for (student of m1) {
     teachers = shuffle(teachers);
     let ts = teachers.filter(function (item) {
@@ -554,6 +573,11 @@ function assign() {
   }
   console.log("teachers", teachers);
 
+  m1 = m1.sort((a, b) => {
+    if (a.number < b.number) return -1;
+    if (a.number > b.number) return 1;
+    else return 0;
+  });
 
   for (student of m1) {
     let tr, td;
